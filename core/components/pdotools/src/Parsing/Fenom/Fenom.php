@@ -242,6 +242,7 @@ class Fenom extends \Fenom
                 'number' => 'number_format',
                 'reset' => 'reset',
                 'end' => 'end',
+                'filterPathSegment' => 'Fenom\Modifier::filterPathSegment',
             ]
         );
 
@@ -661,6 +662,10 @@ class Fenom extends \Fenom
 
         $this->_modifiers['preg_split'] = function ($value, $pattern) use ($fenom) {
             return preg_split($pattern, $value);
+        };
+        
+        $this->_modifiers['filterPathSegment'] = function ($string) use ($modx) {
+            return $modx->filterPathSegment($string);
         };
 
     }
